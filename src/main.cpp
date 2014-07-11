@@ -1977,7 +1977,7 @@ bool CBlock::ConnectBlock(CValidationState &state, CBlockIndex* pindex, CCoinsVi
 	if (vtx[0].vout[0].scriptPubKey != CHARITY_SCRIPT)
 		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
 
-	int64 charityAmount = GetBlockValue(pindex->pprev->nBits, pindex->nHeight, 0) * 0.5 / 100;
+	int64 charityAmount = GetBlockValue(pindex->pprev->nBits, pindex->nHeight, 0) * 5 / 100;
 	if (vtx[0].vout[0].nValue < charityAmount)
 		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the charity (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[0].nValue, charityAmount));
 		
